@@ -1,0 +1,7 @@
+rich
+web3
+ecdsa
+base58
+requests
+coincurve
+eth_account
