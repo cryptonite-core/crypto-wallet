@@ -15,7 +15,7 @@ Dependencies:
     - ecdsa
     - base58
     - coincurve (optional, for faster cryptography)
-    
+
 Author: Muhammad Hridoy
 Date: 2025-08-08
 License: MIT
@@ -45,16 +45,16 @@ w3_bsc = Web3(Web3.HTTPProvider(bsc_rpc_url))
 result_queue = queue.Queue()
 
 def fetch_proxies():
-    url = "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=5000&country=all&ssl=all&anonymity=all"
+    url = "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"
     try:
         resp = requests.get(url, timeout=10)
         if resp.status_code == 200:
             proxies = resp.text.strip().split('\n')
             proxies = [p.strip() for p in proxies if p.strip()]
-            console.print(f"[green]Fetched {len(proxies)} proxies from ProxyScrape[/]")
+            console.print(f"[bold white]\n Fetched [bold green]{len(proxies)} [bold white]proxies from ProxyScrape[/]\n");time.sleep(3)
             return proxies
     except Exception as e:
-        console.print(f"[red]Failed to fetch proxies: {e}[/]")
+        console.print(f"[bold white]\n Failed to fetch proxies: [bold red]{e}[/]\n");time.sleep(3)
     return []
 
 proxy_list = fetch_proxies()
@@ -174,8 +174,8 @@ def main():
     os.system('cls' if os.name == 'nt' else 'clear')
     print()
     console.print("[bold purple]Crypto Wallet Scanner with Proxy Support[/]\n")
-    console.print("[bold red]Warning:[/] Finding funded wallets randomly is almost impossible.")
-    console.print("Use this tool responsibly and for research only.\n")
+    console.print("[bold red]Warning:[/] [bold white]Finding funded wallets randomly is almost impossible.")
+    console.print("[bold white]Use this tool responsibly and for research only.\n")
 
     chains = ["BTC", "ETH", "BNB"]
     chain = console.input("Choose chain to scan [BTC/ETH/BNB]: ").strip().upper()
