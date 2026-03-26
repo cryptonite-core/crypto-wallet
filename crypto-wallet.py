@@ -342,6 +342,6 @@ def main():
         console.print("\n[bold red]No funded wallets found.[/]")
 
     _print_summary(stats, chain, filename)
-    
+
 if __name__ == "__main__":
     main()
